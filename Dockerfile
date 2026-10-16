@@ -1,4 +1,4 @@
-# 1. यहाँ node:16-alpine का इस्तेमाल करें
+7# 1. यहाँ node:16-alpine का इस्तेमाल करें
 FROM node:16-alpine AS builder
 WORKDIR /app
 COPY package.json yarn.lock ./
