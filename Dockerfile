@@ -1,7 +1,8 @@
 FROM node:16-alpine AS builder
 WORKDIR /app
 COPY package.json yarn.lock ./
-RUN yarn install --frozen-lockfile
+# यहाँ '--ignore-scripts' जोड़ दिया है ताकि पोस्ट-इंस्टॉल एरर न आए
+RUN yarn install --frozen-lockfile --ignore-scripts
 COPY . .
 RUN yarn build
 
