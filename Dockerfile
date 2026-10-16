@@ -1,8 +1,8 @@
 FROM node:16-alpine AS builder
 WORKDIR /app
-COPY package.json yarn.lock ./
-RUN yarn install --frozen-lockfile
 COPY . .
+# Lerna की एरर से बचने के लिए --unsafe-perm और सामान्य इनस्टॉल का उपयोग करें
+RUN yarn install --ignore-optional --unsafe-perm
 RUN yarn build
 
 FROM nginx:1.25.3-alpine
