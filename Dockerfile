@@ -1,7 +1,10 @@
 FROM node:16-alpine AS builder
 WORKDIR /app
+
+# जरूरी सिस्टम डिपेंडेंसीज और टूल्स इंस्टॉल करें जो मोनोरेपो के लिए जरूरी हैं
+RUN apk add --no-cache libc6-compat zstd tar bash git python3 make g++
+
 COPY . .
-# Lerna की एरर से बचने के लिए --unsafe-perm और सामान्य इनस्टॉल का उपयोग करें
 RUN yarn install --ignore-optional --unsafe-perm
 RUN yarn build
 
